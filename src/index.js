@@ -8,7 +8,7 @@ const markdownit = require('markdown-it')()
     _postMeta.push(yaml.load(fm));
   });
 
-module.exports = class MarkdownRssPlugin {
+module.exports = class MarkdownRssFeedPlugin {
   constructor(options = {}) {
     this.options = Object.assign({
       outputPath: '/',
@@ -17,11 +17,18 @@ module.exports = class MarkdownRssPlugin {
       generator: 'Feed for node.js',
       language: "en",
       includeContent: false,
+      metaMappings: {
+        title: 'title',
+        id: 'slug',
+        slug: 'slug',
+        description: 'description',
+        date: 'date'
+      }
     }, options);
   }
 
   apply(compiler) {
-    compiler.hooks.emit.tapAsync('MarkdownRssPlugin', (compilation, callback) => {
+    compiler.hooks.emit.tapAsync('MarkdownRssFeedPlugin', (compilation, callback) => {
       const markdown = new Map();
       const regex = /^((?!node_modules).)*\.md$/gm;
 
@@ -55,12 +62,12 @@ module.exports = class MarkdownRssPlugin {
       });
 
       _postMeta.forEach(meta => feed.addItem({
-        title: meta.title,
-        id: meta.slug,
-        link: `${this.options.link}${meta.slug}`,
-        description: meta.description,
-        date: meta.date,
-        content: this.options.includeContent ? markdown.get(`${meta.slug}.md`) : null,
+        title: meta[this.options.metaMappings.title],
+        id: meta[this.options.metaMappings.id],
+        link: `${this.options.link}${meta[this.options.metaMappings.slug]}`,
+        description: meta[this.options.metaMappings.description],
+        date: meta[this.options.metaMappings.date],
+        content: this.options.includeContent ? markdown.get(`${meta[this.options.metaMappings.slug]}.md`) : null,
         author: [this.options.author]
       }));
 
