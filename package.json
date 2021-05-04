@@ -1,6 +1,6 @@
 {
   "name": "markdown-rss-feed-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A webpack plugin for static websites that generates an rss feed based on markdown files",
   "main": "src/index.js",
   "repository": {

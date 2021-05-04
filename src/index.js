@@ -61,7 +61,7 @@ module.exports = class MarkdownRssFeedPlugin {
         generator: this.options.generator
       });
 
-      _postMeta.forEach(meta => feed.addItem({
+      _postMeta.sort((a, b) => a[this.options.metaMappings.date] > b[this.options.metaMappings.date] ? -1 : 1).forEach(meta => feed.addItem({
         title: meta[this.options.metaMappings.title],
         id: meta[this.options.metaMappings.id],
         link: `${this.options.link}${meta[this.options.metaMappings.slug]}`,
