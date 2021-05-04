@@ -1,42 +1,31 @@
 {
-  "name": "markdown-rss-plugin",
+  "name": "markdown-rss-feed-plugin",
   "version": "1.0.0",
   "description": "A webpack plugin for static websites that generates an rss feed based on markdown files",
-  "main": "dist/index.js",
-  "scripts": {
-    "build": "npx webpack --config webpack.config.js"
-  },
+  "main": "src/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/im-sticky/markdown-rss-plugin.git"
+    "url": "git+https://github.com/im-sticky/markdown-rss-feed-plugin.git"
   },
   "keywords": [
     "markdown",
     "rss",
-    "feed",
     "webpack",
+    "plugin",
+    "feed",
     "blog",
     "atom"
   ],
   "author": "Alex Craig",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/im-sticky/markdown-rss-plugin/issues"
+    "url": "https://github.com/im-sticky/markdown-rss-feed-plugin/issues"
   },
-  "homepage": "https://github.com/im-sticky/markdown-rss-plugin#readme",
-  "devDependencies": {
-    "@babel/cli": "^7.13.14",
-    "@babel/core": "^7.13.14",
-    "@babel/preset-env": "^7.13.12",
-    "babel-loader": "^8.2.2",
-    "markdown-it": "^12.0.4",
-    "markdown-it-front-matter": "^0.2.3",
-    "webpack": "^4.46.0",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.2"
-  },
+  "homepage": "https://github.com/im-sticky/markdown-rss-feed-plugin#readme",
   "dependencies": {
     "feed": "^4.2.2",
-    "markdown-handler": "^0.3.8"
+    "js-yaml": "^4.1.0",
+    "markdown-it": "^12.0.6",
+    "markdown-it-front-matter": "^0.2.3"
   }
 }
